@@ -1,4 +1,4 @@
-# github.com/lawxsz t.me/lawxsz credits!!
+#  github.com/lawxsz t.me/lawxszchannel   #
 
 import subprocess
 import sys
@@ -11,11 +11,11 @@ def install_modules(modules):
             print(f"The module '{module}' is not installed. Installing...")
             subprocess.check_call([sys.executable, "-m", "pip", "install", module])
 
-required_modules = ["customtkinter", "tkfontawesome", "colorama"]
+required_modules = ["customtkinter", "tkfontawesome", "colorama", "requests", "datetime"]
 
 install_modules(required_modules)
 
-import os
+import os, requests
 from datetime import datetime
 import customtkinter as ctk
 from tkinter import filedialog, StringVar, END
@@ -28,6 +28,26 @@ search_cancelled = False
 search_in_progress = False
 files_to_search = []
 current_file_index = 0
+
+
+def check_for_updates():
+    # Verificar actualizaciones en el repositorio de GitHub
+    try:
+        response = requests.get("https://raw.githubusercontent.com/Lawxsz/log-finder/main/version.json")
+        latest_version = response.json()['version']
+        
+        current_version = "1.0" 
+
+        if latest_version != current_version:
+            new_version = requests.get("https://raw.githubusercontent.com/Lawxsz/log-finder/main/lawfinder.py").text
+            with open("lawfinder.py", "w") as newversion:
+                newversion.write(new_version)
+            return latest_version
+        return None
+    except Exception as e:
+        print(f"Error checking for updates: {e}")
+        return None
+
 
 def save_results(page, results, console_textbox):
     timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
@@ -145,6 +165,7 @@ def resume_search(file_entry, search_term_entry, console_textbox, found_accounts
         start_search(file_entry, search_term_entry, console_textbox, found_accounts_label, progressbar)
 
 def create_panel():
+
     ctk.set_appearance_mode("light")
     ctk.set_default_color_theme("blue")
 
