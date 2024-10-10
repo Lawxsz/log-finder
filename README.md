@@ -2,7 +2,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3.10.6-blue.svg)
 ![License](https://img.shields.io/github/license/Lawxsz/log-finder.svg)
-![Version](https://img.shields.io/badge/Version-1.0-green.svg)
+![Version](https://img.shields.io/badge/Version-1.1-green.svg)
 ![Contributions](https://img.shields.io/badge/Contributions-Welcome-brightgreen.svg)
 
 <img title="Panel" src="https://i.imgur.com/IWvDmj3.png" alt="Panel Image" width="539">
