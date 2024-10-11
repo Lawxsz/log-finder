@@ -8,7 +8,7 @@
 <img title="Panel" src="https://i.imgur.com/IWvDmj3.png" alt="Panel Image" width="539">
 <img title="Panel C++" src="https://i.imgur.com/Vyp9RFJ.png" alt="Panel Image" width="539">
 
-Welcome to **Combo Searcher Tool**, a tool designed to help you search through large combo lists in `.txt` format effortlessly. This program allows you to import multiple combo files, search for specific URLs, usernames, or passwords, and extract the data you need in a quick and efficient way!
+Welcome to **Combo Searcher Tool**, a tool designed to help you search through large combo lists in `.txt` format effortlessly. This program allows you to import multiple combo files, search for specific URLs, usernames, or passwords, and extract the data you need in a quick and efficient way! Where to get cloudlogs from, you can pay for them or download them for free from telegram channels like segacloud.
 
 ## 🌟 Features
 - **Multiple combo import**: Load several combo files at once to streamline your workflow.
