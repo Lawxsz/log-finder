@@ -24,31 +24,39 @@ std::string generateFilename(const std::string& searchTerm) {
 }
 
 void printCredits() {
-    setColor(11); // 
+    setColor(11);
     std::cout << "Credits:\n";
     std::cout << "Telegram: t.me/lawxsz\n";
     std::cout << "GitHub: github.com/lawxsz\n\n";
-    setColor(7); // 
+    setColor(7);
 }
 
 void searchInFile(const std::string& filePath, const std::string& searchTerm, int& foundCount) {
-    std::ifstream inputFile(filePath);
+    std::ifstream inputFile(filePath, std::ios::in | std::ios::binary);
     std::string outputFileName = generateFilename(searchTerm);
     std::ofstream outputFile(outputFileName);
 
     if (!inputFile.is_open()) {
-        setColor(12); //
+        setColor(12);
         std::cout << "Error: Could not open the file " << filePath << ".\n";
         return;
     }
 
-    setColor(10); // 
+    if (!outputFile.is_open()) {
+        setColor(12);
+        std::cout << "Error: Could not create the output file " << outputFileName << ".\n";
+        inputFile.close();
+        return;
+    }
+
+    setColor(10);
     std::cout << "Searching for: " << searchTerm << " in " << filePath << "\n";
 
     std::string line;
     while (std::getline(inputFile, line)) {
+        // Check if the line contains the search term
         if (line.find(searchTerm) != std::string::npos) {
-            outputFile << line << "\n"; 
+            outputFile << line << "\n";
             std::cout << "Found: " << line << "\n";
             foundCount++;
         }
@@ -57,8 +65,7 @@ void searchInFile(const std::string& filePath, const std::string& searchTerm, in
     inputFile.close();
     outputFile.close();
 
-
-    setColor(14); 
+    setColor(14);
     std::cout << "Total found: " << foundCount << "\n";
 }
 
@@ -82,7 +89,7 @@ int main() {
 
         std::cout << "Do you want to search again? (y/n): ";
         std::cin >> continueSearch;
-        std::cin.ignore(); 
+        std::cin.ignore();
 
         if (continueSearch == 'y') {
             std::cout << "Enter the search term (account, url, password): ";
